@@ -92,6 +92,39 @@
   background-color: #343a40;
 }
 
+.page-home .navbar .navbar-brand {
+  color: #FFD700 !important;
+}
+
+.page-home .navbar .navbar-brand i {
+  color: #FFD700 !important;
+}
+
+.page-home .navbar .nav-link {
+  color: #FFD700 !important;
+}
+
+.page-home .btn-theme {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+  box-shadow: 0 0 0 2px #fff, 0 3px 9px rgba(0,0,0,0.3);
+}
+
+.page-home .btn-theme:hover {
+  background-color: #FFC107 !important;
+  color: #000 !important;
+}
+
+.page-home .btn-theme-outline {
+  color: #FFD700 !important;
+  box-shadow: 0 0 0 2px #FFD700;
+}
+
+.page-home .btn-theme-outline:hover {
+  background-color: #FFD700 !important;
+  color: #000 !important;
+}
+
 .page-home .caption-header {
   position: relative;
   display: flex;
