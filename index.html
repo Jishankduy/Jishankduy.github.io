@@ -9,9 +9,15 @@
 
   <meta name="copyright" content="MACode ID, https://www.macodeid.com/">
 
-  <title>Virtual Folio - Portfolio HTML5 Template</title>
+  <title>Jishan - Game Developer Portfolio</title>
 
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <link rel="stylesheet" type="text/css" href="assets/css/themify-icons.css">
 
@@ -30,6 +36,634 @@
   <link rel="stylesheet" type="text/css" href="assets/css/virtual.css">
 
   <link rel="stylesheet" type="text/css" href="assets/css/topbar.virtual.css">
+
+  <style>
+    :root {
+      /* Black and Yellow Theme */
+      --primary-color: #FFD700;  /* Bright Yellow */
+      --secondary-color: #1A1A1A;  /* Dark Black */
+      --accent-color: #FFC107;  /* Amber */
+      --text-color: #1A1A1A;
+      --light-bg: #F8F9FA;
+      --dark-bg: #000000;
+      --glass-bg: rgba(255, 215, 0, 0.1);
+      --glass-border: rgba(255, 215, 0, 0.2);
+      --glass-shadow: 0 8px 32px 0 rgba(255, 215, 0, 0.2);
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      background: var(--light-bg);
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--primary-color);
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      margin: 0;
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      transition: all 0.3s ease;
+      position: relative;
+      color: white !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .caption-header {
+      padding: 180px 0 60px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter-spacing-2 {
+      letter-spacing: 2px;
+    }
+
+    .typed-text {
+      color: var(--primary-color);
+      border-right: 2px solid var(--primary-color);
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .header-stats {
+      margin-top: 3rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 215, 0, 0.2);
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-item p {
+      font-size: 0.9rem;
+      color: white;
+      margin: 0;
+    }
+
+    .header-image {
+      position: relative;
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border: 5px solid var(--primary-color);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    }
+
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .floating-element {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: var(--dark-bg);
+      border: 2px solid var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .element-1 {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .element-2 {
+      top: 60%;
+      right: 15%;
+      animation-delay: 1s;
+    }
+
+    .element-3 {
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 2s;
+    }
+
+    .element-4 {
+      top: 30%;
+      right: 25%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    .header-buttons {
+      margin-top: 2rem;
+    }
+
+    .lead {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2rem;
+      max-width: 500px;
+    }
+
+    @media (max-width: 991px) {
+      .header-image {
+        display: none;
+      }
+      
+      .header-content {
+        text-align: center;
+      }
+      
+      .lead {
+        margin: 0 auto;
+      }
+      
+      .header-buttons {
+        justify-content: center;
+      }
+    }
+
+    .badge {
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      color: var(--dark-bg);
+    }
+
+    .page-about {
+      background: var(--light-bg);
+    }
+
+    .progress {
+      height: 12px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      border-radius: 10px;
+    }
+
+    .grid-item {
+      margin-bottom: 30px;
+    }
+
+    .img-place {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      background: white;
+    }
+
+    .img-place:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+    }
+
+    .img-caption {
+      background: linear-gradient(to top, 
+        rgba(0, 0, 0, 0.95), 
+        rgba(0, 0, 0, 0.8)
+      );
+      padding: 25px;
+    }
+
+    .modal-content {
+      border-radius: 20px;
+      border: none;
+      background: white;
+      box-shadow: 0 25px 50px rgba(255, 215, 0, 0.1);
+    }
+
+    .modal-body {
+      padding: 2.5rem;
+    }
+
+    .btn-theme {
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      color: var(--dark-bg) !important;
+    }
+
+    .btn-theme:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+      color: var(--dark-bg) !important;
+      background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+    }
+
+    .btn-theme-outline {
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color) !important;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .btn-theme-outline:hover {
+      background: var(--primary-color);
+      color: var(--dark-bg) !important;
+      border-color: var(--primary-color);
+    }
+
+    .vg-footer {
+      background: linear-gradient(45deg, 
+        var(--dark-bg), 
+        #1A1A1A
+      );
+      color: white;
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vg-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255, 215, 0, 0.05)"/></svg>');
+      opacity: 0.1;
+    }
+
+    .footer-info {
+      background: rgba(255, 215, 0, 0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .footer-info p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      border-color: rgba(255, 215, 0, 0.1);
+      margin: 1rem 0;
+    }
+
+    .list-unstyled li {
+      margin-bottom: 0.5rem;
+    }
+
+    .list-unstyled a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .list-unstyled a:hover {
+      color: var(--primary-color);
+    }
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .close:hover {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .floating-button {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @media (max-width: 768px) {
+      .caption-header h1 {
+        font-size: 3rem;
+      }
+      
+      .navbar {
+        background: white;
+      }
+      
+      .footer-info {
+        margin-bottom: 2rem;
+      }
+    }
+
+    /* Add subtle color accents */
+    .fg-theme {
+      color: var(--primary-color) !important;
+    }
+
+    .fg-theme-red {
+      color: var(--accent-color) !important;
+    }
+
+    /* Add hover effects with new colors */
+    .img-place:hover {
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+    }
+
+    .modal-content {
+      box-shadow: 0 25px 50px rgba(255, 215, 0, 0.1);
+    }
+
+    /* Add color transitions */
+    .nav-link, .btn-theme, .btn-theme-outline, .list-unstyled a {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Add subtle background patterns */
+    .vg-footer::before {
+      background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255, 215, 0, 0.05)"/></svg>');
+    }
+
+    /* Add color to icons */
+    .fas, .fab {
+      color: var(--primary-color);
+    }
+
+    .img-caption .fas, .img-caption .fab {
+      color: var(--accent-color);
+    }
+
+    /* Add color to social media icons */
+    .list-unstyled .fab {
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .list-unstyled .fab:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Additional black and yellow specific styles */
+    .navbar {
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid var(--primary-color);
+    }
+
+    .nav-link {
+      color: white !important;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+
+    .caption-header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(assets/img/bg_image_1.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .caption-header h5 {
+      color: var(--primary-color);
+    }
+
+    .page-about {
+      background: var(--light-bg);
+    }
+
+    .progress {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      background: var(--dark-bg);
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+    }
+
+    .modal-footer {
+      background: var(--dark-bg);
+      border-top: 2px solid var(--primary-color);
+    }
+
+    .close {
+      color: var(--primary-color);
+    }
+
+    .close:hover {
+      color: var(--accent-color);
+    }
+
+    /* New Stats Cards Section Styles */
+    .stats-cards-section {
+      padding: 0 0 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      max-width: 300px;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 215, 0, 0.1);
+      border-color: var(--primary-color);
+    }
+
+    .stat-card-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--dark-bg);
+      border: 2px solid var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover .stat-card-icon {
+      background: var(--primary-color);
+      transform: rotateY(180deg);
+    }
+
+    .stat-card-icon i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover .stat-card-icon i {
+      color: var(--dark-bg);
+    }
+
+    .stat-card-content h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .stat-card-content p {
+      color: white;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .stat-card {
+        margin-bottom: 30px;
+      }
+      
+      .caption-header {
+        padding: 100px 0 40px;
+      }
+
+      .header-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header-buttons .btn {
+        margin: 10px 0;
+      }
+    }
+
+    /* Add smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Adjust content padding to account for fixed navbar */
+    .vg-page {
+      padding-top: 0;
+    }
+
+    /* Add navbar transition */
+    .navbar {
+      transition: all 0.3s ease;
+    }
+
+    /* Add navbar shadow on scroll */
+    .navbar.scrolled {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .caption-header {
+        padding: 150px 0 40px;
+      }
+    }
+  </style>
 </head>
 
 <body class="theme-red">
@@ -45,41 +679,119 @@
     <!-- Navbar -->
     <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
       <div class="container">
-        <a href="" class="navbar-brand">Jishan</a>
+        <a href="" class="navbar-brand">
+          <i class="fas fa-gamepad mr-2"></i>Jishan
+        </a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
           <span class="ti-menu"></span>
         </button>
         <div class="collapse navbar-collapse" id="main-navbar">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a href="#home" class="nav-link" data-animate="scrolling">Home</a>
+              <a href="#home" class="nav-link" data-animate="scrolling">
+                <i class="fas fa-home mr-1"></i> Home
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#about" class="nav-link" data-animate="scrolling">About</a>
+              <a href="#about" class="nav-link" data-animate="scrolling">
+                <i class="fas fa-user mr-1"></i> About
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#portfolio" class="nav-link" data-animate="scrolling">Portfolio</a>
+              <a href="#portfolio" class="nav-link" data-animate="scrolling">
+                <i class="fas fa-briefcase mr-1"></i> Portfolio
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#contact" class="nav-link" data-animate="scrolling">Contact</a>
+              <a href="#contact" class="nav-link" data-animate="scrolling">
+                <i class="fas fa-envelope mr-1"></i> Contact
+              </a>
             </li>
           </ul>
           <ul class="nav ml-auto">
             <li class="nav-item">
-              <button class="btn btn-fab btn-theme no-shadow">En</button>
+              <button class="btn btn-theme no-shadow">
+                <i class="fas fa-globe mr-1"></i> En
+              </button>
             </li>
           </ul>
         </div>
       </div>
     </div> <!-- End Navbar -->
 
+    <!-- Enhanced Caption header -->
+    <div class="caption-header text-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 wow fadeInUp">
+            <div class="header-content text-center">
+              <div class="badge mb-4">
+                <i class="fas fa-gamepad mr-2"></i>Game Developer
+              </div>
+              <h5 class="fw-normal text-uppercase letter-spacing-2 mb-3">Welcome to my Portfolio</h5>
+              <h1 class="fw-light mb-4">
+                I'm <b class="fg-theme">Jishan</b>
+                <span class="typed-text"></span>
+              </h1>
+              <p class="lead mb-5 mx-auto" style="max-width: 600px;">
+                Crafting immersive gaming experiences through code and creativity. 
+                Specializing in Unity development and game design.
+              </p>
+              <div class="header-buttons d-flex justify-content-center">
+                <a href="#portfolio" class="btn btn-theme mr-3">
+                  <i class="fas fa-eye mr-2"></i>View My Work
+                </a>
+                <a href="#contact" class="btn btn-theme-outline">
+                  <i class="fas fa-paper-plane mr-2"></i>Contact Me
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- End Enhanced Caption header -->
 
-    <!-- Caption header -->
-    <div class="caption-header text-center wow zoomInDown">
-      <h5 class="fw-normal">Welcome</h5>
-      <h1 class="fw-light mb-4">I'm <b class="fg-theme">Jishan</b></h1>
-      <div class="badge">Game developer</div>
-    </div> <!-- End Caption header -->
+    <!-- Stats Cards Section -->
+    <div class="stats-cards-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <div class="stat-card wow fadeInUp" data-wow-delay="0.1s">
+              <div class="stat-card-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="stat-card-content">
+                <h3 class="counter">5+</h3>
+                <p>Years Experience</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-card wow fadeInUp" data-wow-delay="0.2s">
+              <div class="stat-card-icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <div class="stat-card-content">
+                <h3 class="counter">20+</h3>
+                <p>Projects Completed</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-card wow fadeInUp" data-wow-delay="0.3s">
+              <div class="stat-card-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-card-content">
+                <h3 class="counter">10k+</h3>
+                <p>Happy Players</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="floating-button"><span class="ti-mouse"></span></div>
   </div>
 
@@ -220,13 +932,21 @@
   <div class="vg-page page-portfolio" id="portfolio">
     <div class="container">
       <div class="text-center wow fadeInUp">
-        <div class="badge badge-subhead">Game Project's'</div>
+        <div class="badge badge-subhead">
+          <i class="fas fa-gamepad mr-2"></i>Game Projects
+        </div>
       </div>
-      <h1 class="text-center fw-normal wow fadeInUp">See my work</h1>
+      <h1 class="text-center fw-normal wow fadeInUp">My Latest Work</h1>
       <div class="filterable-button py-3 wow fadeInUp" data-toggle="selected">
-        <button class="btn btn-theme-outline selected" data-filter="*">All</button>
-        <button class="btn btn-theme-outline" data-filter=".2d">2D</button>
-        <button class="btn btn-theme-outline" data-filter=".3d">3D</button>
+        <button class="btn btn-theme-outline selected" data-filter="*">
+          <i class="fas fa-th-large mr-2"></i>All
+        </button>
+        <button class="btn btn-theme-outline" data-filter=".2d">
+          <i class="fas fa-square mr-2"></i>2D
+        </button>
+        <button class="btn btn-theme-outline" data-filter=".3d">
+          <i class="fas fa-cube mr-2"></i>3D
+        </button>
       </div>
 
       <div class="gridder my-3">
@@ -234,8 +954,12 @@
           <div class="img-place" data-toggle="modal" data-target="#gameModal1" style="cursor: pointer;">
             <img src="assets/img/work/work-1.jpg" alt="">
             <div class="img-caption">
-              <h5 class="fg-theme">Unity 2D kit Game</h5>
-              <p>Click to view details</p>
+              <h5 class="fg-theme">
+                <i class="fas fa-gamepad mr-2"></i>Unity 2D kit Game
+              </h5>
+              <p>
+                <i class="fas fa-info-circle mr-2"></i>Click to view details
+              </p>
             </div>
           </div>
         </div>
@@ -243,8 +967,12 @@
           <div class="img-place" data-toggle="modal" data-target="#gameModal2" style="cursor: pointer;">
             <img src="assets/img/work/work-2.jpg" alt="">
             <div class="img-caption">
-              <h5 class="fg-theme">CO-OP Snake2D</h5>
-              <p>Click to view details</p>
+              <h5 class="fg-theme">
+                <i class="fas fa-gamepad mr-2"></i>CO-OP Snake2D
+              </h5>
+              <p>
+                <i class="fas fa-info-circle mr-2"></i>Click to view details
+              </p>
             </div>
           </div>
         </div>
@@ -252,8 +980,12 @@
           <div class="img-place" data-toggle="modal" data-target="#gameModal3" style="cursor: pointer;">
             <img src="assets/img/work/work-3.jpg" alt="">
             <div class="img-caption">
-              <h5 class="fg-theme">Happy ball</h5>
-              <p>Click to view details</p>
+              <h5 class="fg-theme">
+                <i class="fas fa-gamepad mr-2"></i>Happy ball
+              </h5>
+              <p>
+                <i class="fas fa-info-circle mr-2"></i>Click to view details
+              </p>
             </div>
           </div>
         </div>
@@ -261,8 +993,12 @@
           <div class="img-place" data-toggle="modal" data-target="#gameModal4" style="cursor: pointer;">
             <img src="assets/img/work/work-4.jpg" alt="">
             <div class="img-caption">
-              <h5 class="fg-theme">Battle Tank</h5>
-              <p>Click to view details</p>
+              <h5 class="fg-theme">
+                <i class="fas fa-gamepad mr-2"></i>Battle Tank
+              </h5>
+              <p>
+                <i class="fas fa-info-circle mr-2"></i>Click to view details
+              </p>
             </div>
           </div>
         </div>
@@ -270,8 +1006,12 @@
           <div class="img-place" data-toggle="modal" data-target="#gameModal5" style="cursor: pointer;">
             <img src="assets/img/work/work-5.jpg" alt="">
             <div class="img-caption">
-              <h5 class="fg-theme">Chest System</h5>
-              <p>Click to view details</p>
+              <h5 class="fg-theme">
+                <i class="fas fa-gamepad mr-2"></i>Chest System
+              </h5>
+              <p>
+                <i class="fas fa-info-circle mr-2"></i>Click to view details
+              </p>
             </div>
           </div>
         </div>
@@ -279,14 +1019,20 @@
           <div class="img-place" data-toggle="modal" data-target="#gameModal6" style="cursor: pointer;">
             <img src="assets/img/work/work-6.jpg" alt="">
             <div class="img-caption">
-              <h5 class="fg-theme">Happy Glass</h5>
-              <p>Click to view details</p>
+              <h5 class="fg-theme">
+                <i class="fas fa-gamepad mr-2"></i>Happy Glass
+              </h5>
+              <p>
+                <i class="fas fa-info-circle mr-2"></i>Click to view details
+              </p>
             </div>
           </div>
         </div>
       </div> <!-- End gridder -->
       <div class="text-center wow fadeInUp">
-        <a href="javascript:void(0)" class="btn btn-theme">Load More</a>
+        <a href="javascript:void(0)" class="btn btn-theme">
+          <i class="fas fa-plus mr-2"></i>Load More
+        </a>
       </div>
     </div>
   </div> <!-- End Portfolio page -->
@@ -486,51 +1232,89 @@
 
   <!-- Footer -->
   <div class="vg-footer" id="contact">
-    <h1 class="text-center">Contact</h1>
+    <h1 class="text-center">Get In Touch</h1>
     <div class="container">
       <div class="row">
         <div class="col-lg-4 py-3">
           <div class="footer-info">
-            <p>Where to find me</p>
+            <p>
+              <i class="fas fa-map-marker-alt mr-2"></i>Where to find me
+            </p>
             <hr class="divider">
-            <p class="fs-large fg-white">Sangam Vihar New Delhi 110080</p>
+            <p class="fs-large fg-white">
+              <i class="fas fa-location-dot mr-2"></i>Sangam Vihar New Delhi 110080
+            </p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 py-3">
           <div class="float-lg-right">
-            <p>Follow me</p>
+            <p>
+              <i class="fas fa-share-alt mr-2"></i>Follow me
+            </p>
             <hr class="divider">
             <ul class="list-unstyled">
-              <li><a href="https://www.instagram.com/jishan127/">Instagram</a></li>
-              <li><a href="https://www.facebook.com/jishan1791996">Facebook</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="https://www.linkedin.com/in/jishan-jishan-9b216621b">Linkedin</a></li>
-              <li><a href="https://github.com/Jishankduy">GitHub</a></li>
+              <li>
+                <a href="https://www.instagram.com/jishan127/">
+                  <i class="fab fa-instagram mr-2"></i>Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/jishan1791996">
+                  <i class="fab fa-facebook mr-2"></i>Facebook
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fab fa-twitter mr-2"></i>Twitter
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/jishan-jishan-9b216621b">
+                  <i class="fab fa-linkedin mr-2"></i>Linkedin
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Jishankduy">
+                  <i class="fab fa-github mr-2"></i>GitHub
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 py-3">
           <div class="float-lg-right">
-            <p>Contact me</p>
+            <p>
+              <i class="fas fa-envelope mr-2"></i>Contact me
+            </p>
             <hr class="divider">
             <ul class="list-unstyled">
-              <li>jishan.kduy@gmail.com</li>
-              <li>+91 7042459065</li>
+              <li>
+                <i class="fas fa-envelope mr-2"></i>jishan.kduy@gmail.com
+              </li>
+              <li>
+                <i class="fas fa-phone mr-2"></i>+91 7042459065
+              </li>
             </ul>
           </div>
         </div>
       </div>
       <div class="row justify-content-center mt-3">
         <div class="col-12 mb-3">
+          <div class="text-center">
+            <a href="#home" class="btn btn-theme">
+              <i class="fas fa-arrow-up mr-2"></i>Back to Top
+            </a>
+          </div>
         </div>
-        </form>
       </div>
       <div class="col-12">
-        <p class="text-center mb-0 mt-4">Copyright &copy;2022. All right reserved | This template is made with <span
-            class="ti-heart fg-theme-red"></span> by <a href="https://www.macodeid.com/">MACode ID</a></p>
+        <p class="text-center mb-0 mt-4">
+          Copyright &copy;2024. All rights reserved | Made with 
+          <i class="fas fa-heart fg-theme-red"></i> by 
+          <a href="https://github.com/Jishankduy">Jishan</a>
+        </p>
       </div>
     </div>
-  </div>
   </div> <!-- End footer -->
 
 
@@ -560,6 +1344,17 @@
 
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script>
+
+  <script>
+    // Add shadow to navbar on scroll
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        document.querySelector('.navbar').classList.add('scrolled');
+      } else {
+        document.querySelector('.navbar').classList.remove('scrolled');
+      }
+    });
+  </script>
 
 </body>
 
